@@ -36,6 +36,4 @@ public List<Book> findAll(){
     return myRepository.findAll();
 }
 
-
-
 }

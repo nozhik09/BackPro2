@@ -22,4 +22,9 @@ public class FirstRepository implements MyRepository {
     public List<Book> findAll() {
         return List.copyOf(books);
     }
+
+    @Override
+    public Book findById() {
+        return null;
+    }
 }

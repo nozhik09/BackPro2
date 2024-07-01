@@ -5,8 +5,8 @@ import quizzes.entities.Book;
 import java.util.List;
 
 public interface MyRepository {
+    List<Book> findAll();
 
-List<Book> findAll();
-
+    Book findById();
 
 }

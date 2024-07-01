@@ -23,6 +23,11 @@ public class SecondRepo implements MyRepository {
 
     @Override
     public List<Book> findAll() {
-        return List.copyOf(books.values());
+        return new ArrayList<>(books.values());
+    }
+
+    @Override
+    public Book findById() {
+        return null;
     }
 }
