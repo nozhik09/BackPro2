@@ -7,10 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Lesson05" />
-        <module name="HomeWork3 (1)" />
         <module name="HomeWork3" />
         <module name="Test" />
+        <module name="HomeWork3 (3)" />
+        <module name="Lesson05" />
+        <module name="HomeWork3 (1)" />
+        <module name="HomeWork3 (2)" />
         <module name="MavenLessons" />
       </profile>
     </annotationProcessing>
