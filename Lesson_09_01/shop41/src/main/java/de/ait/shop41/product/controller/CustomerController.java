@@ -23,7 +23,7 @@ public class CustomerController {
         return customers;
     }
 
-@GetMapping("/customer/{id}")
+    @GetMapping("/customer/{id}")
     public Customer GetCustomerById(@PathVariable Long id) {
         return customers.stream()
                 .filter(customer -> customer.getId().equals(Long.valueOf(id)))
