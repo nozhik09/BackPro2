@@ -2,7 +2,7 @@
 GET http://{{server}}:{{port}}/api/products
 
 ### GET /products?ative=true
-GET http://{{server}}:{{port}}/api/products?active=true
+GET http://{{server}}:{{port}}/api/products?active=false
 
 ### POST /products
 POST http://{{server}}:{{port}}/api/products
@@ -15,11 +15,11 @@ Content-Type: application/json
 }
 
 ### PUT /products/{id}
-PUT http://{{server}}:{{port}}/api/products/2
+PUT http://{{server}}:{{port}}/api/products/4
 Content-Type: application/json
 
 {
-  "title":"kukumber",
-  "price":1.99,
-  "active":true
+  "title":"kukumber 1 kg",
+  "price":1.06,
+  "active":false
 }

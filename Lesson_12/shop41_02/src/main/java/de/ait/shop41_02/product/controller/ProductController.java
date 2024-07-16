@@ -39,12 +39,14 @@ public class ProductController {
     //   "/food-products"
     // "/products?active=false&sortType=byTitle"
     //   "/products/2"
-    @Operation(summary = "Get list of products " , description = "Get all products by active value")
+    @Operation(summary = "Get list of products " ,
+            description = "Get all products by active value")
     @GetMapping
     //@RequestMapping(method = RequestMethod.GET)
     public List<ProductResponseDTO> getProducts(
             @RequestParam(name="active", required = false, defaultValue = "all")
-            @Parameter(description = "For getting all active product should be true and should be false for non active" , example = "true")
+            @Parameter(description = "For getting all active product should be true and should be false for non active" ,
+                    example = "true")
             String active) {
         if (active.equals("false")){
             return service.getAllNotActiveProducts();
