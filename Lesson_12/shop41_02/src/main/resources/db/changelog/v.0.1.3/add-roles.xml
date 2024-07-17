@@ -4,10 +4,16 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <include file="v.0.1.0/changelog.xml" relativeToChangelogFile="true"/>
-    <include file="v.0.1.1/changelog.xml" relativeToChangelogFile="true"/>
-    <include file="v.0.1.2/changelog.xml" relativeToChangelogFile="true"/>
-    <include file="v.0.1.3/changelog.xml" relativeToChangelogFile="true"/>
+    <changeSet id="20240715_add_roles" author="nozh">
+        <insert tableName="role">
+            <column name="title">ROLE_ADMIN</column>
+        </insert>
+
+        <insert tableName="role">
+            <column name="title">ROLE_USER</column>
+        </insert>
 
 
+
+    </changeSet>
 </databaseChangeLog>
