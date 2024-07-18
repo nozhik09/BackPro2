@@ -21,4 +21,6 @@ public interface ProductService {
 
     Product deleteById(Long id);
 
+    Product getEntityById(Long id);
+
 }

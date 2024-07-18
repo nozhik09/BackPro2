@@ -1,5 +1,6 @@
 package de.ait.shop41_02.product.service;
 
+import de.ait.shop41_02.exception_handing.exceptions.ProductNotFoundException2;
 import de.ait.shop41_02.product.dto.ProductRequestDTO;
 import de.ait.shop41_02.product.dto.ProductResponseDTO;
 import de.ait.shop41_02.product.entity.Product;
@@ -7,7 +8,6 @@ import de.ait.shop41_02.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.nio.file.ProviderNotFoundException;
 import java.util.List;
 
 
@@ -30,7 +30,15 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public Product getById(Long id) {
-        return repository.findById(id).orElseThrow(()->new ProviderNotFoundException());
+        return repository.findById(id).orElseThrow(()->
+                new ProductNotFoundException2(String.format("Product with id %s not found", id)));
+    }
+
+
+    @Override
+    public Product getEntityById(Long id) {
+        return repository.findById(id).orElseThrow(()->
+                new ProductNotFoundException2(String.format("Product with id %s not found", id)));
     }
 
     @Override

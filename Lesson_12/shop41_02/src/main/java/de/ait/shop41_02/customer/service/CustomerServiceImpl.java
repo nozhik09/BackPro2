@@ -48,7 +48,7 @@ public class CustomerServiceImpl implements CustomerService {
                 .orElseThrow(() -> new RuntimeException("Customer not found"));
 
         Product product = productService
-                .getById(productId);
+                .getEntityById(productId);
 
         customer.getCart().addProduct(product);
 

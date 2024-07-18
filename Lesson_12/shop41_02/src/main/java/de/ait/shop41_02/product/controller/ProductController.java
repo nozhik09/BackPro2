@@ -1,5 +1,7 @@
 package de.ait.shop41_02.product.controller;
 
+import de.ait.shop41_02.exception_handing.ApiExceptionInfo;
+import de.ait.shop41_02.exception_handing.exceptions.ProductNotFoundException2;
 import de.ait.shop41_02.product.dto.ProductRequestDTO;
 import de.ait.shop41_02.product.dto.ProductResponseDTO;
 import de.ait.shop41_02.product.entity.Product;
@@ -7,6 +9,7 @@ import de.ait.shop41_02.product.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -70,7 +73,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<ProductResponseDTO> createNewProduct(@RequestBody ProductRequestDTO product){
+    public ResponseEntity<ProductResponseDTO> createNewProduct(@Valid @RequestBody ProductRequestDTO product){
         ProductResponseDTO saved = service.save(product);
         return new ResponseEntity<>(saved, HttpStatus.CREATED);
     }
@@ -81,6 +84,12 @@ public class ProductController {
         return updated;
     }
 
+
+
+    @ExceptionHandler(ProductNotFoundException2.class)
+    public ResponseEntity<ApiExceptionInfo> productNotFound(Exception e){
+        return new ResponseEntity<ApiExceptionInfo>(new ApiExceptionInfo(e.getMessage()),HttpStatus.NOT_FOUND);
+    }
 
 
 }

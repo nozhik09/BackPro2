@@ -17,7 +17,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user")
+@Table(name = "users")
 public class User implements UserDetails {
 
 
@@ -53,16 +53,16 @@ public class User implements UserDetails {
     Long id;
     @Column(name = "username")
     String username;
-    @Column(name = "Password")
+    @Column(name = "password")
     String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role" , joinColumns =@JoinColumn(name = "user_id"),
+    @JoinTable(name = "users_role" , joinColumns =@JoinColumn(name = "users_id"),
     inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
 
     public static void main(String[] args) {
-        System.out.println(new BCryptPasswordEncoder().encode("qwerty"));
+        System.out.println(new BCryptPasswordEncoder().encode("qwer"));
     }
 }
