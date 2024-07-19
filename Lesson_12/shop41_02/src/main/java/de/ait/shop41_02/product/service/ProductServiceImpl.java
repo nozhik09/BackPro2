@@ -1,11 +1,14 @@
 package de.ait.shop41_02.product.service;
 
 import de.ait.shop41_02.exception_handing.exceptions.ProductNotFoundException2;
+import de.ait.shop41_02.exception_handing.exceptions.ProductNotFoundException3;
 import de.ait.shop41_02.product.dto.ProductRequestDTO;
 import de.ait.shop41_02.product.dto.ProductResponseDTO;
 import de.ait.shop41_02.product.entity.Product;
 import de.ait.shop41_02.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +18,7 @@ import java.util.List;
 @Service
 public class ProductServiceImpl implements ProductService{
     private final ProductRepository repository;
+    private final Logger logger = LogManager.getLogger(ProductServiceImpl.class);
 
 
     @Override
@@ -30,8 +34,10 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public Product getById(Long id) {
-        return repository.findById(id).orElseThrow(()->
-                new ProductNotFoundException2(String.format("Product with id %s not found", id)));
+        logger.error("get by id start with {}: ",id);
+        logger.warn("get by id end with {}: ",id);
+        logger.info("get by id end with {}: ",id);
+        return repository.findById(id).orElseThrow(()->new ProductNotFoundException3(String.format("Product with id %s not found", id)));
     }
 
 

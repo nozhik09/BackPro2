@@ -88,7 +88,7 @@ public class ProductController {
 
     @ExceptionHandler(ProductNotFoundException2.class)
     public ResponseEntity<ApiExceptionInfo> productNotFound(Exception e){
-        return new ResponseEntity<ApiExceptionInfo>(new ApiExceptionInfo(e.getMessage()),HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new ApiExceptionInfo(e.getMessage()),HttpStatus.NOT_FOUND);
     }
 
 

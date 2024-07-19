@@ -16,18 +16,17 @@ public class ProductRequestDTO {
 
     @NotNull(message = "product title should be not null")
     @NotBlank(message = "product title should be not blank")
-    @Pattern(regexp = "[A-Z][a-z]{2,}",message = "not valid pattern")
+//    @Pattern(regexp = "[A-Z][a-z]{2,}",message = "not valid pattern")
     @Schema(description = "product title" , example = "milk")
     private String title;
 
 
     @DecimalMax(value = "10000.00")
     @DecimalMin(value = "0.01")
-    @Schema(description = "price title" , example = "1.09")
+    @Schema(description = "price title" , example = "9.99")
     private BigDecimal price;
 
 
-    @Pattern(regexp = "true|falce", message = "should be true or false")
     @Schema(description = "product active status" , example = "true")
     private boolean active;
 
