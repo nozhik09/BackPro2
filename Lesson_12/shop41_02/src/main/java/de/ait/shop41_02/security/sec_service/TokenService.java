@@ -29,11 +29,11 @@ public class TokenService {
     private final int REFRESH_TOKEN_EXPIRES_TIME = 30;
 
 
-    public TokenService(@Value("${key.acces}") String accessSecretPharse,
+    public TokenService(@Value("${key.access}") String accessSecretPhrse,
                         @Value("${key.refresh}") String refreshSecretKey,
                         @Autowired RoleRepository roleRepository) {
 
-        this.accessSecretKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(accessSecretPharse));
+        this.accessSecretKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(accessSecretPhrse));
         this.refreshSecretKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(refreshSecretKey));
         this.roleRepository = roleRepository;
 
