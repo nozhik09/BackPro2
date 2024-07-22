@@ -23,3 +23,27 @@ Content-Type: application/json
   "price":1.06,
   "active":true
 }
+
+### GET /customers
+GET http://{{server}}:{{port}}/api/customers
+
+### GET /customers/{id}
+GET http://{{server}}:{{port}}/api/customers/2
+
+### POST /customers
+POST http://{{server}}:{{port}}/api/customers
+Content-Type: application/json
+
+{
+  "name": "Anna dsfsfsfdssf",
+  "active": true
+}
+
+### PUT /customers
+PUT http://{{server}}:{{port}}/api/customers/3
+Content-Type: application/json
+
+{
+  "name": "Anna Storm",
+  "active": true
+}

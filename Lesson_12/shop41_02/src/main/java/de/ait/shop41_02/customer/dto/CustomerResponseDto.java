@@ -19,4 +19,8 @@ public class CustomerResponseDto {
     private boolean active;
     private CartResponseDto cart;
 
+
+
+
+
 }

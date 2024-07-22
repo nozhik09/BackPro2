@@ -13,6 +13,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
@@ -55,4 +58,32 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
 
+
+    @Override
+    public CustomerResponseDto updateCustomer(Long id, CustomerRequestDto customerRequestDto) {
+
+        Customer existingCustomer = customerRepository.findById(id).orElseThrow(()->new RuntimeException("customer not found"));
+        modelMapper.map(customerRequestDto, existingCustomer);
+        return modelMapper.map(existingCustomer, CustomerResponseDto.class);
+
+
+    }
+
+    @Override
+    public void deleteCustomer(Long id) {
+
+        if (customerRepository.existsById(id)) {
+            customerRepository.deleteById(id);
+        }else {
+            throw new RuntimeException("customer not found");
+        }
+
+    }
+
+    @Override
+    public List<CustomerResponseDto> getAllCustomers() {
+        return  customerRepository.findAll().stream()
+                .map(customer -> modelMapper.map(customer,CustomerResponseDto.class))
+                .collect(Collectors.toList());
+    }
 }

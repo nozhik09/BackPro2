@@ -41,8 +41,10 @@ public class SpringConfiguration {
                         auth -> auth
                                 .requestMatchers(HttpMethod.GET, "/api/products").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/api/products/{id}").hasAnyRole("ADMIN", "USER")
-                                .requestMatchers(HttpMethod.POST, "/api/products").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.POST, "/api/products").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/auth/login" , "auth/refresh").permitAll()
+                                .requestMatchers(HttpMethod.GET, "api/customers").permitAll()
+                                .requestMatchers(HttpMethod.POST, "api/customers").permitAll()
                                 .anyRequest().authenticated())
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .addFilterAfter(tokenFilter, UsernamePasswordAuthenticationFilter.class);

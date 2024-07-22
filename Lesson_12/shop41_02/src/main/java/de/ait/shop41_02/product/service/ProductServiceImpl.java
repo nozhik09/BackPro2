@@ -63,7 +63,7 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public List<ProductResponseDTO> getAllActiveProducts() {
-        return ProductResponseDTO.of(repository.findAll());
+        return ProductResponseDTO.of(repository.findProductsByActive(true));
     }
 
     @Override
